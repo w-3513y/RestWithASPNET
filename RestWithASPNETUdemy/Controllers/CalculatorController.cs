@@ -14,7 +14,7 @@ public class CalculatorController : ControllerBase
     }
 
     [HttpGet("sum/{firstNumber}/{secondNumber}")]
-    public IActionResult GetSum(string firstNumber, string secondNumber)
+    public IActionResult Sum(string firstNumber, string secondNumber)
     {
         if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
         {
@@ -24,8 +24,8 @@ public class CalculatorController : ControllerBase
         return BadRequest("Invalid Input");
     }
 
-    [HttpGet("subtract/{firstNumber}/{secondNumber}")]
-    public IActionResult GetSubtract(string firstNumber, string secondNumber)
+    [HttpGet("subtraction/{firstNumber}/{secondNumber}")]
+    public IActionResult Subtraction(string firstNumber, string secondNumber)
     {
         if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
         {
@@ -35,8 +35,8 @@ public class CalculatorController : ControllerBase
         return BadRequest("Invalid Input");
     }
 
-    [HttpGet("multiply/{firstNumber}/{secondNumber}")]
-    public IActionResult GetMultiply(string firstNumber, string secondNumber)
+    [HttpGet("multiplication/{firstNumber}/{secondNumber}")]
+    public IActionResult Multiplication(string firstNumber, string secondNumber)
     {
         if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
         {
@@ -46,8 +46,8 @@ public class CalculatorController : ControllerBase
         return BadRequest("Invalid Input");
     }
 
-    [HttpGet("divided/{firstNumber}/{secondNumber}")]
-    public IActionResult GetDivided(string firstNumber, string secondNumber)
+    [HttpGet("division/{firstNumber}/{secondNumber}")]
+    public IActionResult Division(string firstNumber, string secondNumber)
     {
         if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
         {
@@ -57,8 +57,8 @@ public class CalculatorController : ControllerBase
         return BadRequest("Invalid Input");
     }
 
-    [HttpGet("media")] //body Example: ["12", "13", "14"]
-    public IActionResult GetMedia([FromBody] IEnumerable<string> strNumbers)
+    [HttpGet("mean")] //body Example: ["12", "13", "14"]
+    public IActionResult Mean([FromBody] IEnumerable<string> strNumbers)
     {
         /*inf: FromBody in swagger throw the exception:
           TypeError: Window.fetch: HEAD or GET Request cannot have a body.
@@ -79,7 +79,7 @@ public class CalculatorController : ControllerBase
     }
 
     [HttpGet("squareroot/{number}")]
-    public IActionResult GetSquareRoot(string number)
+    public IActionResult SquareRoot(string number)
     {
         if (IsNumeric(number))
         {
