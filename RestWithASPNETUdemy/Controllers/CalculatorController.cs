@@ -18,18 +18,29 @@ public class CalculatorController : ControllerBase
     {
         if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
         {
-            return Ok(AsDecimal(firstNumber) + AsDecimal(secondNumber));
+            return Ok(
+                $"{firstNumber} + {secondNumber} = {AsDecimal(firstNumber) + AsDecimal(secondNumber)}");
         }
         return BadRequest("Invalid Input");
     }
-
-    private string AsDecimal(string firstNumber)
+    private bool IsNumeric(string strNumber)
     {
-        throw new NotImplementedException();
+        double number;
+        return double.TryParse
+            (strNumber,
+            System.Globalization.NumberStyles.Any,
+            System.Globalization.NumberFormatInfo.InvariantInfo,
+            out number);
+    }
+    private decimal AsDecimal(string strNumber)
+    {
+        decimal decimalvalue;
+        if (decimal.TryParse(strNumber, out decimalvalue))
+        {
+            return decimalvalue;
+        }
+        return 0;
     }
 
-    private bool IsNumeric(string firstNumber)
-    {
-        throw new NotImplementedException();
-    }
+
 }
