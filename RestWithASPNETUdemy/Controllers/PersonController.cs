@@ -19,35 +19,35 @@ public class PersonController : ControllerBase
         _personService = personService;
     }
 
-    [HttpGet]
+    [HttpGet("get")]
     public IActionResult Get()
     {
         return Ok(_personService.FindAll());
     }
 
-    [HttpGet]
+    [HttpGet("getbyId")]
     public IActionResult GetById(int id)
     {
         var person = _personService.FindByID(id);
         if (person == null) return NotFound();
-        return Ok(_personService.FindByID(id));
+        return Ok(person);
     }
 
-    [HttpPost]
+    [HttpPost("post")]
     public IActionResult Post([FromBody] Person person)
     {
         if (person == null) return BadRequest();
         return Ok(_personService.Create(person));
     }
 
-    [HttpPut]
+    [HttpPut("update")]
     public IActionResult Update([FromBody] Person person)
     {
         if (person == null) return BadRequest();
         return Ok(_personService.Update(person));
     }
 
-    [HttpDelete]
+    [HttpDelete("delete")]
     public IActionResult Delete(int id)
     {
         _personService.Delete(id);
