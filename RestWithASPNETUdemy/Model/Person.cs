@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RestWithASPNETUdemy.Model;
 
-[Table("person")]
+[Table("Person")]
 public class Person
 {    
     [Column("id")]
