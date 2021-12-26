@@ -1,9 +1,13 @@
 using RestWithASPNETUdemy.Model;
+using RestWithASPNETUdemy.Model.Context;
 
 namespace RestWithASPNETUdemy.Services.Implementations;
 
 public class PersonServiceImplementation : IPersonService
-{    
+{
+    private MySQLContext _context;
+    public PersonServiceImplementation(MySQLContext context) 
+        => _context = context;
 
     public Person Create(Person person) => person;
 
@@ -11,14 +15,8 @@ public class PersonServiceImplementation : IPersonService
     {
     }
 
-    public List<Person> FindAll()
-    {
-        var people = new List<Person>();        
-        for (int i = 0; i < 8; i++){
-            people.Add(FindByID(i));
-        }
-        return people;
-    }
+    public List<Person> FindAll 
+        => _context.People.ToList();
 
     public Person FindByID(int id)
     {

@@ -22,7 +22,7 @@ public class PersonController : ControllerBase
     [HttpGet("get")]
     public IActionResult Get()
     {
-        return Ok(_personService.FindAll());
+        return Ok(_personService.FindAll);
     }
 
     [HttpGet("getbyId")]
