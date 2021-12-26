@@ -6,7 +6,7 @@ namespace RestWithASPNETUdemy.Model;
 public class Person
 {    
     [Column("id")]
-    private int Id { get; set; }
+    public int Id { get; set; }
     [Column("first_name")]
     public string FirstName { get; set; }
     [Column("last_name")]
