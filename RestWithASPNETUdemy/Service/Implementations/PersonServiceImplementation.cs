@@ -18,17 +18,8 @@ public class PersonServiceImplementation : IPersonService
     public List<Person> FindAll 
         => _context.People.ToList();
 
-    public Person FindByID(int id)
-    {
-        return new Person
-        {
-            Id = id,
-            FirstName = $"Name{id}",
-            LastName = $"LastName{id}",
-            Adress = $"Adress{id} - UF",
-            Gender = 'G'
-        };
-    }
+    public Person FindByID(int id) 
+        => _context.People.Where(p => p.Id == id).FirstOrDefault();
 
     public Person Update(Person person) => person;
 }
