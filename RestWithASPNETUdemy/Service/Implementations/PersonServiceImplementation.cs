@@ -9,6 +9,12 @@ public class PersonServiceImplementation : IPersonService
     public PersonServiceImplementation(MySQLContext context)
         => _context = context;
 
+    public List<Person> FindAll
+        => _context.People.ToList();
+
+    public Person FindByID(int id)
+        => _context.People.SingleOrDefault(p => p.Id == id);
+
     public Person Create(Person person)
     {
         try
@@ -39,12 +45,6 @@ public class PersonServiceImplementation : IPersonService
             }
         }
     }
-
-    public List<Person> FindAll
-        => _context.People.ToList();
-
-    public Person FindByID(int id)
-        => _context.People.SingleOrDefault(p => p.Id == id);
 
     public Person Update(Person person)
     {
