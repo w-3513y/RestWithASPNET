@@ -15,6 +15,28 @@ public class PersonServiceImplementation : IPersonService
     public Person FindByID(int id)
         => _context.People.SingleOrDefault(p => p.Id == id);
 
+    public Person Update(Person person)
+    {
+        var _person = _context.People.SingleOrDefault(p => p.Id == person.Id);
+        if (_person is null)
+        {
+            return Create(person);
+        }
+        else
+        {
+            try
+            {
+                _context.Entry(_person).CurrentValues.SetValues(person);
+                _context.SaveChanges();
+            }
+            catch
+            {
+                throw;
+            }
+            return person;
+        }
+    }
+    
     public Person Create(Person person)
     {
         try
@@ -43,28 +65,6 @@ public class PersonServiceImplementation : IPersonService
             {
                 throw;
             }
-        }
-    }
-
-    public Person Update(Person person)
-    {
-        var _person = _context.People.SingleOrDefault(p => p.Id == person.Id);
-        if (_person is null)
-        {
-            return Create(person);
-        }
-        else
-        {
-            try
-            {
-                _context.Entry(_person).CurrentValues.SetValues(person);
-                _context.SaveChanges();
-            }
-            catch
-            {
-                throw;
-            }
-            return person;
         }
     }
 }
