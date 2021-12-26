@@ -28,7 +28,7 @@ public class PersonServiceImplementation : IPersonService
             FirstName = $"Name{id}",
             LastName = $"LastName{id}",
             Adress = $"Adress{id} - UF",
-            Gender = "Gender"
+            Gender = 'G'
         };
     }
 
