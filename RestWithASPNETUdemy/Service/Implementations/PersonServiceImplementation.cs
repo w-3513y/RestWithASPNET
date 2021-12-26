@@ -7,7 +7,7 @@ public class PersonServiceImplementation : IPersonService
 
     public Person Create(Person person) => person;
 
-    public void Delete(long id)
+    public void Delete(int id)
     {
     }
 
@@ -20,7 +20,7 @@ public class PersonServiceImplementation : IPersonService
         return people;
     }
 
-    public Person FindByID(long id)
+    public Person FindByID(int id)
     {
         return new Person
         {
