@@ -6,7 +6,7 @@ public interface IPersonRepository
 {
     Person Create(Person person);
     Person FindByID(int id);
-    List<Person> FindAll { get; }
+    List<Person> FindAll ();
 
     Person Update(Person person);
     void Delete(int id);

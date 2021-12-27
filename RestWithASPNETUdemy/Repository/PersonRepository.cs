@@ -4,13 +4,13 @@ using RestWithASPNETUdemy.Interfaces.Repository;
 
 namespace RestWithASPNETUdemy.Repository;
 
-public class PersonRepositoryImplementation : IPersonRepository
+public class PersonRepository : IPersonRepository
 {
     private MySQLContext _context;
-    public PersonRepositoryImplementation(MySQLContext context)
+    public PersonRepository(MySQLContext context)
         => _context = context;
 
-    public List<Person> FindAll
+    public List<Person> FindAll()
         => _context.People.ToList();
 
     public Person FindByID(int id)
