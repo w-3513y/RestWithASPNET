@@ -1,73 +1,29 @@
 using RestWithASPNETUdemy.Data.Context;
 using RestWithASPNETUdemy.Data.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
+using RestWithASPNETUdemy.Interfaces.Repository;
 
 namespace RestWithASPNETUdemy.Business;
 
 public class PersonBusiness : IPersonBusiness
 {
-    private MySQLContext _context;
+    private readonly IPersonRepository _repository;
 
-
-    public PersonBusiness(MySQLContext context)
-        => _context = context;
+    public PersonBusiness(IPersonRepository repository)
+        => _repository = repository;
 
     public List<Person> FindAll 
-        => _context.People.ToList();
+        => _repository.FindAll();
 
     public Person FindByID(int id)
-        => _context.People.SingleOrDefault(p => p.Id == id);
+        => _repository.FindByID(id);
 
-    public Person Update(Person person)
-    {
-        var _person = _context.People.SingleOrDefault(p => p.Id == person.Id);
-        if (_person is null)
-        {
-            return Create(person);
-        }
-        else
-        {
-            try
-            {
-                _context.Entry(_person).CurrentValues.SetValues(person);
-                _context.SaveChanges();
-            }
-            catch
-            {
-                throw;
-            }
-            return person;
-        }
-    }
-    
-    public Person Create(Person person)
-    {
-        try
-        {
-            _context.Add(person);
-            _context.SaveChanges();
-        }
-        catch
-        {
-            throw;
-        }
-        return person;
-    }
+    public Person Update(Person person) 
+        => _repository.Update(person);
 
-    public void Delete(int id)
-    {
-        var _person = _context.People.SingleOrDefault(p => p.Id == id);
-        if (_person != null)
-        {
-            try
-            {
-                _context.People.Remove(_person);
-                _context.SaveChanges();
-            }
-            catch
-            {
-                throw;
-            }
-        }
-    }
+    public Person Create(Person person) 
+        => _repository.Create(person);
+
+    public void Delete(int id) 
+        => _repository.Delete(id);
 }
