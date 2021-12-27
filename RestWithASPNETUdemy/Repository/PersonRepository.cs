@@ -19,11 +19,7 @@ public class PersonRepository : IPersonRepository
     public Person Update(Person person)
     {
         var _person = _context.People.SingleOrDefault(p => p.Id == person.Id);
-        if (_person is null)
-        {
-            return Create(person);
-        }
-        else
+        if (_person != null)
         {
             try
             {
@@ -34,10 +30,10 @@ public class PersonRepository : IPersonRepository
             {
                 throw;
             }
-            return person;
         }
+        return _person;
     }
-    
+
     public Person Create(Person person)
     {
         try
