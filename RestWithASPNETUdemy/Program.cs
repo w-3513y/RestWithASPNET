@@ -1,6 +1,10 @@
 using RestWithASPNETUdemy.Data;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration().
+                 WriteTo.Console().CreateLogger();
 
 // Add services to the container.
 
@@ -16,8 +20,21 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    //swagger
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    //migrations
+    try
+    {
+var evolve = new Evolve.Evolve(new 
+       Pomelo.EntityFrameworkCore.MySql.Data.MySqlClient.MySqlConnection())
+    }
+    catch (Exception e)
+    {
+        Log.Error("Database migration failed", e);
+        throw;
+    }
 }
 
 //app.UseHttpsRedirection();e
