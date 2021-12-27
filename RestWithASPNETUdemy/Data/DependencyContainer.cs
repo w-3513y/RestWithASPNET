@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using RestWithASPNETUdemy.Model.Context;
-using RestWithASPNETUdemy.Services;
-using RestWithASPNETUdemy.Services.Implementations;
+using RestWithASPNETUdemy.Data.Context;
+using RestWithASPNETUdemy.Business;
+using RestWithASPNETUdemy.Interfaces.Business;
 
 namespace RestWithASPNETUdemy.Data;
 
@@ -12,6 +12,6 @@ public class DependencyContainer
     {
         var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
         builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 27))));
-        builder.Services.AddScoped<IPersonService, PersonServiceImplementation>();
+        builder.Services.AddScoped<IPersonBusiness, PersonBusiness>();
     }
 }

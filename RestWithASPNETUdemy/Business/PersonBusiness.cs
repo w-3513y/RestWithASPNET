@@ -1,15 +1,18 @@
-using RestWithASPNETUdemy.Model;
-using RestWithASPNETUdemy.Model.Context;
+using RestWithASPNETUdemy.Data.Context;
+using RestWithASPNETUdemy.Data.Model;
+using RestWithASPNETUdemy.Interfaces.Business;
 
-namespace RestWithASPNETUdemy.Services.Implementations;
+namespace RestWithASPNETUdemy.Business;
 
-public class PersonServiceImplementation : IPersonService
+public class PersonBusiness : IPersonBusiness
 {
     private MySQLContext _context;
-    public PersonServiceImplementation(MySQLContext context)
+
+
+    public PersonBusiness(MySQLContext context)
         => _context = context;
 
-    public List<Person> FindAll
+    public List<Person> FindAll 
         => _context.People.ToList();
 
     public Person FindByID(int id)

@@ -1,8 +1,8 @@
-using RestWithASPNETUdemy.Model;
+using RestWithASPNETUdemy.Data.Model;
 
-namespace RestWithASPNETUdemy.Services;
+namespace RestWithASPNETUdemy.Interfaces.Business;
 
-public interface IPersonService{
+public interface IPersonBusiness{
     Person Create(Person person);
     Person FindByID(int id);
     List<Person> FindAll { get; }
