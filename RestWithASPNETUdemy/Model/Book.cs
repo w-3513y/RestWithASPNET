@@ -1,13 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RestWithASPNETUdemy.Data.Model;
+namespace RestWithASPNETUdemy.Model;
 
 [Table("books")]
-public class Book
+public class Book : Base
 {
-    [Column("id")]
-    public int Id { get; set; }
     [Required]
     [StringLength(100)]
     [Column("author")]

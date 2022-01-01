@@ -3,10 +3,10 @@ using RestWithASPNETUdemy.Data.Context;
 using RestWithASPNETUdemy.Business;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Interfaces.Repository;
-using RestWithASPNETUdemy.Repository;
 using Serilog;
 using MySqlConnector;
-using RestWithASPNETUdemy.Data.Model;
+using RestWithASPNETUdemy.Model;
+using RestWithASPNETUdemy.Data.Repository;
 
 namespace RestWithASPNETUdemy.Data;
 
@@ -21,8 +21,8 @@ public class DependencyContainer
         builder.Services.AddScoped<IPersonBusiness, PersonBusiness>();
         builder.Services.AddScoped<IBookBusiness, BookBusiness>();
         //Repository
-        builder.Services.AddScoped<IBaseRepository<Person>, PersonRepository>();
-        builder.Services.AddScoped<IBaseRepository<Book>, BookRepository>();
+        builder.Services.AddScoped<IBaseRepository<Person>, BaseRepository<Person>>();
+        builder.Services.AddScoped<IBaseRepository<Book>, BaseRepository<Book>>();
     }
 
     public static void CreateMigration(string connection)

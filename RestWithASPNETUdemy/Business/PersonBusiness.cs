@@ -1,4 +1,4 @@
-using RestWithASPNETUdemy.Data.Model;
+using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Interfaces.Repository;
 
@@ -17,7 +17,7 @@ public class PersonBusiness : IPersonBusiness
     public Person FindByID(int id)
         => _repository.FindByID(id);
 
-    public void Update(Person person) 
+    public Person Update(Person person) 
         => _repository.Update(person);
 
     public Person Create(Person person) 

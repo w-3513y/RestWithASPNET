@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using RestWithASPNETUdemy.Data.Model;
+using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 
 namespace RestWithASPNETUdemy.Controllers;
@@ -45,9 +45,7 @@ public class PersonController : ControllerBase
     public IActionResult Update([FromBody] Person person)
     {
         if (person == null) return BadRequest();
-        _personBusiness.Update(person);
-        return NoContent();
-
+        return Ok(_personBusiness.Update(person));
     }
 
     [HttpDelete("delete")]

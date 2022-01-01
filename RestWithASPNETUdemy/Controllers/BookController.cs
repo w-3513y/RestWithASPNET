@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using RestWithASPNETUdemy.Data.Model;
+using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 
 namespace RestWithASPNETUdemy.Controllers;

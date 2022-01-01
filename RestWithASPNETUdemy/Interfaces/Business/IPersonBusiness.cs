@@ -1,4 +1,4 @@
-using RestWithASPNETUdemy.Data.Model;
+using RestWithASPNETUdemy.Model;
 
 namespace RestWithASPNETUdemy.Interfaces.Business;
 
@@ -7,6 +7,6 @@ public interface IPersonBusiness{
     Person FindByID(int id);
     IEnumerable<Person> FindAll { get; }
 
-    void Update(Person person);
+    Person Update(Person person);
     void Delete(int id);
 }

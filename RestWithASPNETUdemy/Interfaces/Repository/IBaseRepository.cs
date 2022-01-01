@@ -1,12 +1,12 @@
-using RestWithASPNETUdemy.Data.Model;
+using RestWithASPNETUdemy.Model;
 
 namespace RestWithASPNETUdemy.Interfaces.Repository;
 
-public interface IBaseRepository<TEntity> where TEntity : class
+public interface IBaseRepository<T> where T : Base
 {
-    TEntity Create(TEntity obj);
-    TEntity FindByID(int id);
-    IEnumerable<TEntity> FindAll ();
-    void Update(TEntity obj);
+    T Create(T obj);
+    T FindByID(int id);
+    IEnumerable<T> FindAll ();
+    T Update(T obj);
     void Delete(int id);
 }

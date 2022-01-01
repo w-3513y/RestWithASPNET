@@ -1,4 +1,4 @@
-using RestWithASPNETUdemy.Data.Model;
+using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Interfaces.Repository;
 
@@ -17,7 +17,7 @@ public class BookBusiness : IBookBusiness
     public Book FindByID(int id)
         => _repository.FindByID(id);
 
-    public void Update(Book book) 
+    public Book Update(Book book) 
         => _repository.Update(book);
 
     public Book Create(Book book) 

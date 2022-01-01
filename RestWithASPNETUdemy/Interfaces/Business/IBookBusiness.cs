@@ -1,4 +1,4 @@
-using RestWithASPNETUdemy.Data.Model;
+using RestWithASPNETUdemy.Model;
 
 namespace RestWithASPNETUdemy.Interfaces.Business;
 
@@ -6,6 +6,6 @@ public interface IBookBusiness{
     Book Create(Book book);
     Book FindByID(int id);
     IEnumerable<Book> FindAll { get; }
-    void Update(Book book);
+    Book Update(Book book);
     void Delete(int id);
 }
