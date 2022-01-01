@@ -45,7 +45,9 @@ public class PersonController : ControllerBase
     public IActionResult Update([FromBody] Person person)
     {
         if (person == null) return BadRequest();
-        return Ok(_personBusiness.Update(person));
+        _personBusiness.Update(person);
+        return NoContent();
+
     }
 
     [HttpDelete("delete")]

@@ -4,19 +4,19 @@ using RestWithASPNETUdemy.Interfaces.Repository;
 
 namespace RestWithASPNETUdemy.Repository;
 
-public class PersonRepository : IPersonRepository
+public class PersonRepository : IBaseRepository<Person>
 {
     private MySQLContext _context;
     public PersonRepository(MySQLContext context)
         => _context = context;
 
-    public List<Person> FindAll()
+    public IEnumerable<Person> FindAll()
         => _context.People.ToList();
 
     public Person FindByID(int id)
         => _context.People.SingleOrDefault(p => p.Id == id);
 
-    public Person Update(Person person)
+    public void Update(Person person)
     {
         var _person = _context.People.SingleOrDefault(p => p.Id == person.Id);
         if (_person != null)
@@ -31,7 +31,6 @@ public class PersonRepository : IPersonRepository
                 throw;
             }
         }
-        return _person;
     }
 
     public Person Create(Person person)
