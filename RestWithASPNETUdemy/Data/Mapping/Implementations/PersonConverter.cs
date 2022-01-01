@@ -1,8 +1,8 @@
-using RestWithASPNETUdemy.Data.Converter.Contract;
-using RestWithASPNETUdemy.Data.VO;
+using RestWithASPNETUdemy.Data.Mapping.Contract;
+using RestWithASPNETUdemy.Data.ValueObjects;
 using RestWithASPNETUdemy.Model;
 
-namespace RestWithASPNETUdemy.Data.Converter.Implementations;
+namespace RestWithASPNETUdemy.Data.Mapping.Implementations;
 
 public class PersonConverter : IParser<PersonVO, Person>, IParser<Person, PersonVO>
 {

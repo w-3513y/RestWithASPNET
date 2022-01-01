@@ -1,4 +1,4 @@
-namespace RestWithASPNETUdemy.Data.Converter.Contract;
+namespace RestWithASPNETUdemy.Data.Mapping.Contract;
 
 public interface IParser<O, D>
 {

@@ -1,4 +1,4 @@
-namespace RestWithASPNETUdemy.Data.VO;
+namespace RestWithASPNETUdemy.Data.ValueObjects;
 
 public class PersonVO
 {
