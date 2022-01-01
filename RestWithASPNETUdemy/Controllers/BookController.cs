@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
+using RestWithASPNETUdemy.Data.Entities;
 
 namespace RestWithASPNETUdemy.Controllers;
 
@@ -35,14 +36,14 @@ public class BookController : ControllerBase
     }
 
     [HttpPost("post")]
-    public IActionResult Post([FromBody] Book book)
+    public IActionResult Post([FromBody] BookEntity book)
     {
         if (book == null) return BadRequest();
         return Ok(_bookBusiness.Create(book));
     }
 
     [HttpPut("update")]
-    public IActionResult Update([FromBody] Book book)
+    public IActionResult Update([FromBody] BookEntity book)
     {
         if (book == null) return BadRequest();
         _bookBusiness.Update(book);
