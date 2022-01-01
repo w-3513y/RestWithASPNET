@@ -6,34 +6,29 @@ using RestWithASPNETUdemy.Interfaces.Repository;
 using RestWithASPNETUdemy.Repository;
 using Serilog;
 using MySqlConnector;
+using RestWithASPNETUdemy.Data.Model;
 
 namespace RestWithASPNETUdemy.Data;
 
 public class DependencyContainer
 {
 
-    public static void RegisterServices(WebApplicationBuilder builder, IWebHostEnvironment environment)
+    public static void RegisterServices(WebApplicationBuilder builder, string connection)
     {
         //Context
-        var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
-        //Migrations
-        if (environment.IsDevelopment())
-        {
-            MigrateDataBase(connection);
-        }
         builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 27))));
         //Services
         builder.Services.AddScoped<IPersonBusiness, PersonBusiness>();
+        builder.Services.AddScoped<IBookBusiness, BookBusiness>();
         //Repository
-        builder.Services.AddScoped<IPersonRepository, PersonRepository>();
-
+        builder.Services.AddScoped<IBaseRepository<Person>, PersonRepository>();
+        builder.Services.AddScoped<IBaseRepository<Book>, BookRepository>();
     }
 
-    private static void MigrateDataBase(string connection)
+    public static void CreateMigration(string connection)
     {
         Log.Logger = new LoggerConfiguration().
          WriteTo.Console().CreateLogger();
-
         try
         {
             MySqlConnection evolveConnection = new(connection);
@@ -43,13 +38,12 @@ public class DependencyContainer
             {
                 Locations = new List<string>
                 {
-                    "db/migrations", 
-                    "db/dataset"
+                    "Data/migrations",
+                    "Data/dataset"
                 },
                 IsEraseDisabled = true
             };
             evolve.Migrate();
-
         }
         catch (Exception e)
         {

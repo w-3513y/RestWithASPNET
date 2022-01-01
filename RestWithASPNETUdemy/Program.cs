@@ -12,13 +12,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApiVersioning();
 
-var app = builder.Build();
+var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 
-DependencyContainer.RegisterServices(builder, app.Environment);
+DependencyContainer.RegisterServices(builder, connection);
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    //creating migrations
+    DependencyContainer.CreateMigration(connection);
     //swagger
     app.UseSwagger();
     app.UseSwaggerUI();
