@@ -1,5 +1,4 @@
 using RestWithASPNETUdemy.Data.ValueObjects;
-using RestWithASPNETUdemy.Model;
 
 namespace RestWithASPNETUdemy.Interfaces.Business;
 
