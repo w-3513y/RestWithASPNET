@@ -1,12 +1,12 @@
-using RestWithASPNETUdemy.Data.ValueObjects;
+using RestWithASPNETUdemy.Data.Entities;
 
 namespace RestWithASPNETUdemy.Interfaces.Business;
 
 public interface IPersonBusiness{
-    PersonVO Create(PersonVO person);
-    PersonVO FindByID(int id);
-    IEnumerable<PersonVO> FindAll { get; }
+    PersonEntity Create(PersonEntity person);
+    PersonEntity FindByID(int id);
+    IEnumerable<PersonEntity> FindAll { get; }
 
-    PersonVO Update(PersonVO person);
+    PersonEntity Update(PersonEntity person);
     void Delete(int id);
 }

@@ -1,7 +1,7 @@
 using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Interfaces.Repository;
-using RestWithASPNETUdemy.Data.ValueObjects;
+using RestWithASPNETUdemy.Data.Entities;
 using RestWithASPNETUdemy.Data.Mapping.Implementations;
 
 namespace RestWithASPNETUdemy.Business;
@@ -17,16 +17,16 @@ public class PersonBusiness : IPersonBusiness
         _converter = converter;
     }
 
-    public IEnumerable<PersonVO> FindAll
+    public IEnumerable<PersonEntity> FindAll
         => _converter.Parse(_repository.FindAll());
 
-    public PersonVO FindByID(int id)
+    public PersonEntity FindByID(int id)
         => _converter.Parse(_repository.FindByID(id));
 
-    public PersonVO Update(PersonVO person)
+    public PersonEntity Update(PersonEntity person)
         => _converter.Parse(_repository.Update(_converter.Parse(person)));
 
-    public PersonVO Create(PersonVO person)
+    public PersonEntity Create(PersonEntity person)
         => _converter.Parse(_repository.Create(_converter.Parse(person)));
 
     public void Delete(int id)

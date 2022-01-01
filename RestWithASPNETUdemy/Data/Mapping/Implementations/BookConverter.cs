@@ -1,12 +1,12 @@
 using RestWithASPNETUdemy.Data.Mapping.Contract;
-using RestWithASPNETUdemy.Data.ValueObjects;
+using RestWithASPNETUdemy.Data.Entities;
 using RestWithASPNETUdemy.Model;
 
 namespace RestWithASPNETUdemy.Data.Mapping.Implementations;
 
-public class BookConverter : IParser<BookVO, Book>, IParser<Book, BookVO>
+public class BookConverter : IParser<BookEntity, Book>, IParser<Book, BookEntity>
 {
-    public Book Parse(BookVO Origem)
+    public Book Parse(BookEntity Origem)
     {
         if (Origem == null) return null;
         return new Book
@@ -19,10 +19,10 @@ public class BookConverter : IParser<BookVO, Book>, IParser<Book, BookVO>
         };
     }
 
-    public BookVO Parse(Book Origem)
+    public BookEntity Parse(Book Origem)
     {
         if (Origem == null) return null;
-        return new BookVO
+        return new BookEntity
         {
             Id = Origem.Id,
             Author = Origem.Author,
@@ -33,11 +33,11 @@ public class BookConverter : IParser<BookVO, Book>, IParser<Book, BookVO>
 
     }
 
-    public IEnumerable<Book> Parse(List<BookVO> Origem)
+    public IEnumerable<Book> Parse(IEnumerable<BookEntity> Origem)
         => Origem.Select(p => Parse(p)).ToArray();
 
 
-    public IEnumerable<BookVO> Parse(List<Book> Origem)
+    public IEnumerable<BookEntity> Parse(IEnumerable<Book> Origem)
         => Origem.Select(p => Parse(p)).ToArray();
 
 }

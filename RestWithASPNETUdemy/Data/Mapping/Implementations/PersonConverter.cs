@@ -1,12 +1,12 @@
 using RestWithASPNETUdemy.Data.Mapping.Contract;
-using RestWithASPNETUdemy.Data.ValueObjects;
+using RestWithASPNETUdemy.Data.Entities;
 using RestWithASPNETUdemy.Model;
 
 namespace RestWithASPNETUdemy.Data.Mapping.Implementations;
 
-public class PersonConverter : IParser<PersonVO, Person>, IParser<Person, PersonVO>
+public class PersonConverter : IParser<PersonEntity, Person>, IParser<Person, PersonEntity>
 {
-    public Person Parse(PersonVO Origem)
+    public Person Parse(PersonEntity Origem)
     {
         if (Origem == null) return null;
         return new Person
@@ -19,10 +19,10 @@ public class PersonConverter : IParser<PersonVO, Person>, IParser<Person, Person
         };
     }
 
-    public PersonVO Parse(Person Origem)
+    public PersonEntity Parse(Person Origem)
     {
         if (Origem == null) return null;
-        return new PersonVO
+        return new PersonEntity
         {
             Id = Origem.Id,
             FirstName = Origem.FirstName,
@@ -33,11 +33,11 @@ public class PersonConverter : IParser<PersonVO, Person>, IParser<Person, Person
 
     }
 
-    public IEnumerable<Person> Parse(IEnumerable<PersonVO> Origem)
+    public IEnumerable<Person> Parse(IEnumerable<PersonEntity> Origem)
         => Origem.Select(p => Parse(p)).ToArray();
 
 
-    public IEnumerable<PersonVO> Parse(IEnumerable<Person> Origem)
+    public IEnumerable<PersonEntity> Parse(IEnumerable<Person> Origem)
         => Origem.Select(p => Parse(p)).ToArray();
 
 }

@@ -1,6 +1,6 @@
-namespace RestWithASPNETUdemy.Data.ValueObjects;
+namespace RestWithASPNETUdemy.Data.Entities;
 
-public class PersonVO
+public class PersonEntity
 {
     public int Id { get; set; }
     public string FirstName { get; set; } = "first_name";

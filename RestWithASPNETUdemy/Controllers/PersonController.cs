@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
-using RestWithASPNETUdemy.Data.ValueObjects;
+using RestWithASPNETUdemy.Data.Entities;
 
 namespace RestWithASPNETUdemy.Controllers;
 
@@ -36,14 +36,14 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost("post")]
-    public IActionResult Post([FromBody] PersonVO person)
+    public IActionResult Post([FromBody] PersonEntity person)
     {
         if (person == null) return BadRequest();
         return Ok(_personBusiness.Create(person));
     }
 
     [HttpPut("update")]
-    public IActionResult Update([FromBody] PersonVO person)
+    public IActionResult Update([FromBody] PersonEntity person)
     {
         if (person == null) return BadRequest();
         return Ok(_personBusiness.Update(person));
