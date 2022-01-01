@@ -33,11 +33,11 @@ public class PersonConverter : IParser<PersonVO, Person>, IParser<Person, Person
 
     }
 
-    public IEnumerable<Person> Parse(List<PersonVO> Origem)
+    public IEnumerable<Person> Parse(IEnumerable<PersonVO> Origem)
         => Origem.Select(p => Parse(p)).ToArray();
 
 
-    public IEnumerable<PersonVO> Parse(List<Person> Origem)
+    public IEnumerable<PersonVO> Parse(IEnumerable<Person> Origem)
         => Origem.Select(p => Parse(p)).ToArray();
 
 }

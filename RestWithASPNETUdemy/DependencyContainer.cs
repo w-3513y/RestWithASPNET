@@ -7,6 +7,9 @@ using Serilog;
 using MySqlConnector;
 using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Data.Repository;
+using RestWithASPNETUdemy.Data.Mapping.Contract;
+using RestWithASPNETUdemy.Data.Mapping.Implementations;
+using RestWithASPNETUdemy.Data.ValueObjects;
 
 namespace RestWithASPNETUdemy.Data;
 
@@ -23,6 +26,9 @@ public class DependencyContainer
         //Repository
         builder.Services.AddScoped<IBaseRepository<Person>, BaseRepository<Person>>();
         builder.Services.AddScoped<IBaseRepository<Book>, BaseRepository<Book>>();
+        //Mapping
+        builder.Services.AddScoped<IParser<PersonVO, Person>, PersonConverter>();
+        builder.Services.AddScoped<IParser<BookVO, Book>, BookConverter>();
     }
 
     public static void CreateMigration(string connection)

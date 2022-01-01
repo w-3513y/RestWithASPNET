@@ -1,28 +1,34 @@
 using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Interfaces.Repository;
+using RestWithASPNETUdemy.Data.ValueObjects;
+using RestWithASPNETUdemy.Data.Mapping.Implementations;
 
 namespace RestWithASPNETUdemy.Business;
 
 public class PersonBusiness : IPersonBusiness
 {
     private readonly IBaseRepository<Person> _repository;
+    private readonly PersonConverter _converter;
 
-    public PersonBusiness(IBaseRepository<Person> repository)
-        => _repository = repository;
+    public PersonBusiness(IBaseRepository<Person> repository, PersonConverter converter)
+    {
+        _repository = repository;
+        _converter = converter;
+    }
 
-    public IEnumerable<Person> FindAll 
-        => _repository.FindAll();
+    public IEnumerable<PersonVO> FindAll
+        => _converter.Parse(_repository.FindAll());
 
-    public Person FindByID(int id)
-        => _repository.FindByID(id);
+    public PersonVO FindByID(int id)
+        => _converter.Parse(_repository.FindByID(id));
 
-    public Person Update(Person person) 
-        => _repository.Update(person);
+    public PersonVO Update(PersonVO person)
+        => _converter.Parse(_repository.Update(_converter.Parse(person)));
 
-    public Person Create(Person person) 
-        => _repository.Create(person);
+    public PersonVO Create(PersonVO person)
+        => _converter.Parse(_repository.Create(_converter.Parse(person)));
 
-    public void Delete(int id) 
+    public void Delete(int id)
         => _repository.Delete(id);
 }
