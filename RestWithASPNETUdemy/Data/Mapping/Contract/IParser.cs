@@ -1,7 +1,11 @@
 namespace RestWithASPNETUdemy.Data.Mapping.Contract;
 
-public interface IParser<O, D>
+public interface IParser<Origin, Destiny>
 {
-    D Parse(O Origem);
-    IEnumerable<D> Parse(IEnumerable<O> Origem);
+    Destiny Parse(Origin Origem);
+    IEnumerable<Destiny> Parse(IEnumerable<Origin> Origem);
+
+    Origin Parse(Destiny Origem);
+    IEnumerable<Origin> Parse(IEnumerable<Destiny> Origem);
+
 }

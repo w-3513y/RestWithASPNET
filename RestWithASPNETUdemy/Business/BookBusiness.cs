@@ -1,17 +1,17 @@
 using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Interfaces.Repository;
-using RestWithASPNETUdemy.Data.Mapping.Implementations;
 using RestWithASPNETUdemy.Data.Entities;
+using RestWithASPNETUdemy.Data.Mapping.Contract;
 
 namespace RestWithASPNETUdemy.Business;
 
 public class BookBusiness : IBookBusiness
 {
     private readonly IBaseRepository<Book> _repository;
-    private readonly BookConverter _converter;
+    private readonly IParser<BookEntity, Book> _converter;
 
-    public BookBusiness(IBaseRepository<Book> repository, BookConverter converter)
+    public BookBusiness(IBaseRepository<Book> repository, IParser<BookEntity, Book> converter)
     {
         _repository = repository;
         _converter = converter;

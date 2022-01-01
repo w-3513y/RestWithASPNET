@@ -4,7 +4,7 @@ using RestWithASPNETUdemy.Model;
 
 namespace RestWithASPNETUdemy.Data.Mapping.Implementations;
 
-public class BookConverter : IParser<BookEntity, Book>, IParser<Book, BookEntity>
+public class BookConverter : IParser<BookEntity, Book>
 {
     public Book Parse(BookEntity Origem)
     {

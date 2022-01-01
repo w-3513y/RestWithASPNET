@@ -28,7 +28,6 @@ public class DependencyContainer
         builder.Services.AddScoped<IBaseRepository<Book>, BaseRepository<Book>>();
         //Mapping
         builder.Services.AddScoped<IParser<PersonEntity, Person>, PersonConverter>();
-        builder.Services.AddScoped<IParser<Person, PersonEntity>, PersonConverter>();
         builder.Services.AddScoped<IParser<BookEntity, Book>, BookConverter>();
     }
 

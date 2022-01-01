@@ -2,16 +2,16 @@ using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Interfaces.Repository;
 using RestWithASPNETUdemy.Data.Entities;
-using RestWithASPNETUdemy.Data.Mapping.Implementations;
+using RestWithASPNETUdemy.Data.Mapping.Contract;
 
 namespace RestWithASPNETUdemy.Business;
 
 public class PersonBusiness : IPersonBusiness
 {
     private readonly IBaseRepository<Person> _repository;
-    private readonly PersonConverter _converter;
+    private readonly IParser<PersonEntity, Person> _converter;
 
-    public PersonBusiness(IBaseRepository<Person> repository, PersonConverter converter)
+    public PersonBusiness(IBaseRepository<Person> repository, IParser<PersonEntity, Person> converter)
     {
         _repository = repository;
         _converter = converter;

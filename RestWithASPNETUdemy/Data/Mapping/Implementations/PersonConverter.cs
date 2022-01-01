@@ -4,7 +4,7 @@ using RestWithASPNETUdemy.Model;
 
 namespace RestWithASPNETUdemy.Data.Mapping.Implementations;
 
-public class PersonConverter : IParser<PersonEntity, Person>, IParser<Person, PersonEntity>
+public class PersonConverter : IParser<PersonEntity, Person>
 {
     public Person Parse(PersonEntity Origem)
     {
