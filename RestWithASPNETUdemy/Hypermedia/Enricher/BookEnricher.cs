@@ -54,7 +54,7 @@ public class BookEnricher : ContentResponseEnricher<BookEntity>
                 controller = path,
                 id = id
             };
-            return new StringBuilder(urlHelper.Link("DefaultApi", url)).Replace("%2f", "/").ToString();
+            return new StringBuilder(urlHelper.Link("DefaultApi", url)).Replace("%2F", "/").ToString();
         };
     }
 }
