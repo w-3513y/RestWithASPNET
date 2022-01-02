@@ -25,7 +25,4 @@ public class HyperMediaLink
     }
     public string Type { get; set; }
     public string Action { get; set; }
-
-
-
 }

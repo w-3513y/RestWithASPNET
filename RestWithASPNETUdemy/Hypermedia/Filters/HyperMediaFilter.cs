@@ -14,7 +14,7 @@ public class HyperMediaFilter : ResultFilterAttribute
     public override void OnResultExecuting(ResultExecutingContext context)
     {
         TryEnrichResult(context);
-        ; base.OnResultExecuting(context);
+        base.OnResultExecuting(context);
     }
 
     private void TryEnrichResult(ResultExecutingContext context)

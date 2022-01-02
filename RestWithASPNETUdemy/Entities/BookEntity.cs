@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using RestWithASPNETUdemy.Hypermedia;
+using RestWithASPNETUdemy.Hypermedia.Abstract;
 
 namespace RestWithASPNETUdemy.Data.Entities;
 
-public class BookEntity
+public class BookEntity : ISupportsHyperMedia
 {
     public int Id { get; set; }
     [Required]
@@ -15,4 +17,5 @@ public class BookEntity
     [Required]
     [StringLength(100)]
     public string Title { get; set; } = "title";
+    public List<HyperMediaLink> Links { get ;set;} = new List<HyperMediaLink>();
 }

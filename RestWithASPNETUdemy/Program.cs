@@ -1,6 +1,5 @@
 using RestWithASPNETUdemy.Data;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,13 +9,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//Versioning API
 builder.Services.AddApiVersioning();
-builder.Services.AddMvc(options => 
-{ 
-    options.RespectBrowserAcceptHeader = true;
-    options.FormatterMappings.SetMediaTypeMappingForFormat("xml", "application/xml");
-    options.FormatterMappings.SetMediaTypeMappingForFormat("json", "application/json");    
-}).AddXmlDataContractSerializerFormatters();
 
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 
@@ -39,5 +33,6 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapControllerRoute("DefaultApi", "{controller=values}/{id?}");
 
 app.Run();

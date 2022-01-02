@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
+using RestWithASPNETUdemy.Hypermedia;
+using RestWithASPNETUdemy.Hypermedia.Abstract;
 
 namespace RestWithASPNETUdemy.Data.Entities;
 
-public class PersonEntity
+public class PersonEntity : ISupportsHyperMedia
 {
     public int Id { get; set; }
     [Required]
@@ -16,4 +18,5 @@ public class PersonEntity
     public string Adress { get; set; } = "adress";
     [Required]
     public char Gender { get; set; }
+    public List<HyperMediaLink> Links { get ;set;} = new List<HyperMediaLink>();
 }

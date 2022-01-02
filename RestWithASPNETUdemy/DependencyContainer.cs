@@ -10,6 +10,9 @@ using RestWithASPNETUdemy.Data.Repository;
 using RestWithASPNETUdemy.Data.Mapping.Contract;
 using RestWithASPNETUdemy.Data.Mapping.Implementations;
 using RestWithASPNETUdemy.Data.Entities;
+using RestWithASPNETUdemy.Hypermedia.Filters;
+using RestWithASPNETUdemy.Hypermedia.Enricher;
+using Microsoft.Net.Http.Headers;
 
 namespace RestWithASPNETUdemy.Data;
 
@@ -29,6 +32,19 @@ public class DependencyContainer
         //Mapping
         builder.Services.AddScoped<IParser<PersonEntity, Person>, PersonConverter>();
         builder.Services.AddScoped<IParser<BookEntity, Book>, BookConverter>();
+        //HATEOAS
+        builder.Services.AddMvc(options =>
+        {
+            options.RespectBrowserAcceptHeader = true;
+            options.FormatterMappings.SetMediaTypeMappingForFormat("xml", MediaTypeHeaderValue.Parse("application/xml"));
+            options.FormatterMappings.SetMediaTypeMappingForFormat("json", MediaTypeHeaderValue.Parse("application/json"));
+        }).AddXmlSerializerFormatters();
+
+        var filterOptions = new HyperMediaFilterOptions();
+        filterOptions.ContentResponseEnricherList.Add(new PersonEnricher());
+        filterOptions.ContentResponseEnricherList.Add(new BookEnricher());
+        builder.Services.AddSingleton(filterOptions);
+
     }
 
     public static void CreateMigration(string connection)

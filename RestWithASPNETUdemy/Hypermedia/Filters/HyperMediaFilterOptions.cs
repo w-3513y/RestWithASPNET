@@ -4,5 +4,5 @@ namespace RestWithASPNETUdemy.Hypermedia.Filters;
 
 public class HyperMediaFilterOptions
 {
-    public IEnumerable<IResponseEnricher> ContentResponseEnricherList { get; set; } = new List<IResponseEnricher>();
+    public List<IResponseEnricher> ContentResponseEnricherList { get; set; } = new List<IResponseEnricher>();
 }

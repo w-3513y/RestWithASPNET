@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Data.Entities;
+using RestWithASPNETUdemy.Hypermedia.Filters;
 
 namespace RestWithASPNETUdemy.Controllers;
 
@@ -22,12 +23,14 @@ public class PersonController : ControllerBase
     }
 
     [HttpGet("get")]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Get()
     {
         return Ok(_personBusiness.FindAll);
     }
 
     [HttpGet("getbyId")]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult GetById(int id)
     {
         var person = _personBusiness.FindByID(id);
@@ -36,6 +39,7 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost("post")]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Post([FromBody] PersonEntity person)
     {
         if (person == null) return BadRequest();
@@ -43,6 +47,7 @@ public class PersonController : ControllerBase
     }
 
     [HttpPut("update")]
+    [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Update([FromBody] PersonEntity person)
     {
         if (person == null) return BadRequest();

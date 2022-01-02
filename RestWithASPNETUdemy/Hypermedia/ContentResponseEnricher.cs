@@ -6,11 +6,14 @@ using RestWithASPNETUdemy.Hypermedia.Abstract;
 
 namespace RestWithASPNETUdemy.Hypermedia;
 
-public abstract class ContentResponseEnricher<T> : IResponseEnricher where T : ISupportHypermedia
+public abstract class ContentResponseEnricher<T> : IResponseEnricher where T : ISupportsHyperMedia
 {
     public ContentResponseEnricher()
-    { }
-    public bool CanEnrich(Type contentType)
+    {
+
+    }
+
+    public virtual bool CanEnrich(Type contentType)
         => contentType == typeof(T) ||
            contentType == typeof(List<T>);
 
@@ -42,8 +45,6 @@ public abstract class ContentResponseEnricher<T> : IResponseEnricher where T : I
                 });
             }
             await Task.FromResult<object>(null);
-
         }
-
     }
 }
