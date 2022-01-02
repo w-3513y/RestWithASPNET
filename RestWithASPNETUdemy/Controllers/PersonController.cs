@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Data.Entities;
 using RestWithASPNETUdemy.Hypermedia.Filters;
@@ -23,6 +22,10 @@ public class PersonController : ControllerBase
     }
 
     [HttpGet("get")]
+    [ProducesResponseType((200), Type = typeof(List<PersonEntity>))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Get()
     {
@@ -30,6 +33,10 @@ public class PersonController : ControllerBase
     }
 
     [HttpGet("getbyId")]
+    [ProducesResponseType((200), Type = typeof(PersonEntity))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult GetById(int id)
     {
@@ -39,6 +46,9 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost("post")]
+    [ProducesResponseType((200), Type = typeof(PersonEntity))]    
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Post([FromBody] PersonEntity person)
     {
@@ -47,6 +57,9 @@ public class PersonController : ControllerBase
     }
 
     [HttpPut("update")]
+    [ProducesResponseType((200), Type = typeof(PersonEntity))]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Update([FromBody] PersonEntity person)
     {
@@ -55,6 +68,9 @@ public class PersonController : ControllerBase
     }
 
     [HttpDelete("delete")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     public IActionResult Delete(int id)
     {
         _personBusiness.Delete(id);

@@ -22,6 +22,10 @@ public class BookController : ControllerBase
     }
 
     [HttpGet("get")]
+    [ProducesResponseType((200), Type = typeof(List<BookEntity>))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Get()
     {
@@ -29,6 +33,10 @@ public class BookController : ControllerBase
     }
 
     [HttpGet("getbyId")]
+    [ProducesResponseType((200), Type = typeof(BookEntity))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult GetById(int id)
     {
@@ -38,6 +46,9 @@ public class BookController : ControllerBase
     }
 
     [HttpPost("post")]
+    [ProducesResponseType((200), Type = typeof(BookEntity))]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Post([FromBody] BookEntity book)
     {
@@ -46,6 +57,9 @@ public class BookController : ControllerBase
     }
 
     [HttpPut("update")]
+    [ProducesResponseType((200), Type = typeof(BookEntity))]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
     public IActionResult Update([FromBody] BookEntity book)
     {
@@ -56,6 +70,9 @@ public class BookController : ControllerBase
     }
 
     [HttpDelete("delete")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
     public IActionResult Delete(int id)
     {
         _bookBusiness.Delete(id);
