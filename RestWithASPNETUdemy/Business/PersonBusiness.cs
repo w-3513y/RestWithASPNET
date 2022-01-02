@@ -1,7 +1,7 @@
 using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Interfaces.Repository;
-using RestWithASPNETUdemy.Data.Entities;
+using RestWithASPNETUdemy.Entities;
 using RestWithASPNETUdemy.Data.Mapping.Contract;
 
 namespace RestWithASPNETUdemy.Business;

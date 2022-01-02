@@ -6,6 +6,7 @@ namespace RestWithASPNETUdemy.Model;
 public class Base
 {
     [Required]
+    [Key]
     [Column("id")]
     public int Id { get; set; }
 }

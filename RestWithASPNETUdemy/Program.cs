@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Options;
+using RestWithASPNETUdemy.Configurations;
 using RestWithASPNETUdemy.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+var tokenConfigurations = new TokenConfiguration();
+new ConfigureFromConfigurationOptions<TokenConfiguration>(
+    builder.Configuration.GetSection("TokenConfigurations")
+).Configure(tokenConfigurations);
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(build =>
@@ -16,6 +21,8 @@ builder.Services.AddCors(options =>
              .AllowAnyHeader();
     });
 });
+
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Versioning API
@@ -24,6 +31,7 @@ builder.Services.AddApiVersioning();
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 
 DependencyContainer.RegisterServices(builder, connection);
+DependencyContainer.Authentication(builder, tokenConfigurations);
 
 var app = builder.Build();
 

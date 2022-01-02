@@ -1,4 +1,4 @@
-using RestWithASPNETUdemy.Data.Entities;
+using RestWithASPNETUdemy.Entities;
 
 namespace RestWithASPNETUdemy.Interfaces.Business;
 

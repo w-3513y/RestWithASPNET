@@ -9,10 +9,17 @@ using RestWithASPNETUdemy.Model;
 using RestWithASPNETUdemy.Data.Repository;
 using RestWithASPNETUdemy.Data.Mapping.Contract;
 using RestWithASPNETUdemy.Data.Mapping.Implementations;
-using RestWithASPNETUdemy.Data.Entities;
+using RestWithASPNETUdemy.Entities;
 using RestWithASPNETUdemy.Hypermedia.Filters;
 using RestWithASPNETUdemy.Hypermedia.Enricher;
 using Microsoft.Net.Http.Headers;
+using RestWithASPNETUdemy.Services;
+using RestWithASPNETUdemy.Services.Implementations;
+using RestWithASPNETUdemy.Configurations;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestWithASPNETUdemy.Data;
 
@@ -26,9 +33,12 @@ public class DependencyContainer
         //Services
         builder.Services.AddScoped<IPersonBusiness, PersonBusiness>();
         builder.Services.AddScoped<IBookBusiness, BookBusiness>();
+        builder.Services.AddScoped<ILoginBusiness, LoginBusiness>();
+        builder.Services.AddTransient<ITokenService, TokenService>();
         //Repository
         builder.Services.AddScoped<IBaseRepository<Person>, BaseRepository<Person>>();
         builder.Services.AddScoped<IBaseRepository<Book>, BaseRepository<Book>>();
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
         //Mapping
         builder.Services.AddScoped<IParser<PersonEntity, Person>, PersonConverter>();
         builder.Services.AddScoped<IParser<BookEntity, Book>, BookConverter>();
@@ -72,5 +82,33 @@ public class DependencyContainer
             Log.Error("Database migration failed", e);
             throw;
         }
+    }
+
+    public static void Authentication(WebApplicationBuilder builder, TokenConfiguration tokenConfiguration)
+    {
+        builder.Services.AddSingleton(tokenConfiguration);
+        builder.Services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        }).AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = tokenConfiguration.Issuer,
+                ValidAudience = tokenConfiguration.Audience,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenConfiguration.Secret))
+            };
+        });
+        builder.Services.AddAuthorization(auth =>
+        {
+            auth.AddPolicy("Bearar", new AuthorizationPolicyBuilder()
+                        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                        .RequireAuthenticatedUser().Build());
+        });
     }
 }

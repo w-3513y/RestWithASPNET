@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using RestWithASPNETUdemy.Hypermedia;
 using RestWithASPNETUdemy.Hypermedia.Abstract;
 
-namespace RestWithASPNETUdemy.Data.Entities;
+namespace RestWithASPNETUdemy.Entities;
 
 public class BookEntity : ISupportsHyperMedia
 {

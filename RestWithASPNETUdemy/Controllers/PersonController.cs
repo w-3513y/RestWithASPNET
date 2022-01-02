@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RestWithASPNETUdemy.Interfaces.Business;
-using RestWithASPNETUdemy.Data.Entities;
+using RestWithASPNETUdemy.Entities;
 using RestWithASPNETUdemy.Hypermedia.Filters;
 
 namespace RestWithASPNETUdemy.Controllers;

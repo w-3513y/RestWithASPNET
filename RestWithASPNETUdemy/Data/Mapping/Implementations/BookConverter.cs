@@ -1,5 +1,5 @@
 using RestWithASPNETUdemy.Data.Mapping.Contract;
-using RestWithASPNETUdemy.Data.Entities;
+using RestWithASPNETUdemy.Entities;
 using RestWithASPNETUdemy.Model;
 
 namespace RestWithASPNETUdemy.Data.Mapping.Implementations;
