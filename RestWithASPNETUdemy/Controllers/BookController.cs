@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Entities;
 using RestWithASPNETUdemy.Hypermedia.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestWithASPNETUdemy.Controllers;
 
 [ApiVersion("1")]
 [ApiController]
+[Authorize("Bearer")]
 [Route("api/[controller]/v{version:apiversion}")]
 public class BookController : ControllerBase
 {

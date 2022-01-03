@@ -10,5 +10,26 @@ namespace RestWithASPNETUdemy.Controllers;
 [ApiController]
 public class AuthController : ControllerBase
 {
+    private ILoginBusiness _loginbusiness;
 
+    public AuthController(ILoginBusiness loginbusiness)
+    {
+        _loginbusiness = loginbusiness;
+    }
+
+    [HttpPost]
+    [Route("signin")]
+    public IActionResult Signin([FromBody] UserEntity user)
+    {
+        if (user == null)
+        {
+            return BadRequest("Invalid client request");
+        }
+        var token = _loginbusiness.ValidateCredentials(user);
+        if (token == null)
+        {
+            return Unauthorized();
+        }
+        return Ok(token);
+    }
 }

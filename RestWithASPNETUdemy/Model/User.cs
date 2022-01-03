@@ -11,7 +11,7 @@ public class User : Base
     public string FullName { get; set; } = "fullname";
     [Column("password")]
     public string Password { get; set; } = "password";
-    [Column("refresch_token")]
+    [Column("refresh_token")]
     public string RefreshToken { get; set; } = "refreshtoken";
     [Column("refresh_token_expiry_time")]
     public DateTime RefreshTokenExpiryTime { get; set; }

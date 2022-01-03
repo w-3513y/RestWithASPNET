@@ -106,7 +106,7 @@ public class DependencyContainer
         });
         builder.Services.AddAuthorization(auth =>
         {
-            auth.AddPolicy("Bearar", new AuthorizationPolicyBuilder()
+            auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
                         .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                         .RequireAuthenticatedUser().Build());
         });
