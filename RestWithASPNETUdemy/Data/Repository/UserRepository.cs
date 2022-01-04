@@ -22,6 +22,9 @@ public class UserRepository : IUserRepository
         return _context.Users.FirstOrDefault(p => (p.UserName == user.UserName) && (p.Password == pass));
     }
 
+    public User ValidateCredentials(string userName) 
+        => _context.Users.FirstOrDefault(p => p.UserName == userName);    
+
     public User RefreshUserInfo(User user)
     {
         var result = _context.Users.SingleOrDefault(p => p.Id.Equals(user.Id));
