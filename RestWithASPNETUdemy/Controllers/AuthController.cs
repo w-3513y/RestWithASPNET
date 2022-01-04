@@ -32,4 +32,20 @@ public class AuthController : ControllerBase
         }
         return Ok(token);
     }
+
+    [HttpPost]
+    [Route("refresh")]
+    public IActionResult Refresh([FromBody] TokenEntity tokenEntity)
+    {
+        if (tokenEntity == null)
+        {
+            return BadRequest("Invalid client request");
+        }
+        var token = _loginbusiness.ValidateCredentials(tokenEntity);
+        if (token == null)
+        {
+            return BadRequest("Invalid client request");
+        }
+        return Ok(token);
+    }
 }
