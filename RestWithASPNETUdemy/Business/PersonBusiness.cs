@@ -8,10 +8,10 @@ namespace RestWithASPNETUdemy.Business;
 
 public class PersonBusiness : IPersonBusiness
 {
-    private readonly IBaseRepository<Person> _repository;
+    private readonly IPersonRepository _repository;
     private readonly IParser<PersonEntity, Person> _converter;
 
-    public PersonBusiness(IBaseRepository<Person> repository, IParser<PersonEntity, Person> converter)
+    public PersonBusiness(IPersonRepository repository, IParser<PersonEntity, Person> converter)
     {
         _repository = repository;
         _converter = converter;
@@ -28,6 +28,12 @@ public class PersonBusiness : IPersonBusiness
 
     public PersonEntity Create(PersonEntity person)
         => _converter.Parse(_repository.Create(_converter.Parse(person)));
+
+    public PersonEntity Disable(int id)
+    {
+        var person = _repository.Disable(id);
+        return _converter.Parse(person);
+    }
 
     public void Delete(int id)
         => _repository.Delete(id);

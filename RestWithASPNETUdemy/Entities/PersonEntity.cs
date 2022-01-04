@@ -18,5 +18,7 @@ public class PersonEntity : ISupportsHyperMedia
     public string Adress { get; set; } = "adress";
     [Required]
     public char Gender { get; set; }
+    [Required]
+    public bool Enabled { get; set; }
     public List<HyperMediaLink> Links { get ;set;} = new List<HyperMediaLink>();
 }

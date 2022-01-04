@@ -48,7 +48,7 @@ public class PersonController : ControllerBase
     }
 
     [HttpPost("post")]
-    [ProducesResponseType((200), Type = typeof(PersonEntity))]    
+    [ProducesResponseType((200), Type = typeof(PersonEntity))]
     [ProducesResponseType(400)]
     [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
@@ -67,6 +67,18 @@ public class PersonController : ControllerBase
     {
         if (person == null) return BadRequest();
         return Ok(_personBusiness.Update(person));
+    }
+
+    [HttpGet("patch")]
+    [ProducesResponseType((200), Type = typeof(List<PersonEntity>))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
+    [TypeFilter(typeof(HyperMediaFilter))]
+    public IActionResult Patch(int id)
+    {
+        var person = _personBusiness.Disable(id);
+        return Ok(person);
     }
 
     [HttpDelete("delete")]

@@ -8,5 +8,6 @@ public interface IPersonBusiness{
     IEnumerable<PersonEntity> FindAll { get; }
 
     PersonEntity Update(PersonEntity person);
+    PersonEntity Disable(int id);
     void Delete(int id);
 }

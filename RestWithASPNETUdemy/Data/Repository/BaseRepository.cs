@@ -7,7 +7,7 @@ namespace RestWithASPNETUdemy.Data.Repository;
 
 public class BaseRepository<T> : IBaseRepository<T> where T : Base
 {
-    private MySQLContext _context;
+    protected MySQLContext _context;
     private DbSet<T> dataset;
     public BaseRepository(MySQLContext context)
     {

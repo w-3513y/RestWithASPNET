@@ -14,4 +14,6 @@ public class Person : Base
     public string Adress { get; set; } = "adress";
     [Column("gender")]
     public char Gender { get; set; }
+    [Column("enabled")]
+    public bool Enabled { get; set; }
 }
