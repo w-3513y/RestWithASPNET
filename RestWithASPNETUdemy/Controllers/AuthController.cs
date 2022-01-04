@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using RestWithASPNETUdemy.Interfaces.Business;
 using RestWithASPNETUdemy.Entities;
 using RestWithASPNETUdemy.Hypermedia.Filters;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestWithASPNETUdemy.Controllers;
 
@@ -47,5 +48,18 @@ public class AuthController : ControllerBase
             return BadRequest("Invalid client request");
         }
         return Ok(token);
+    }
+
+    [HttpGet]
+    [Route("revoke")]
+    [Authorize("Bearer")]
+    public IActionResult Revoke()
+    {
+        var userName = User.Identity.Name;
+        var result = _loginbusiness.RevokeToken(userName);
+        if (!result){
+            return BadRequest("Invalid Client Request");
+        }
+        return NoContent();
     }
 }

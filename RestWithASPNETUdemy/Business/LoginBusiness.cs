@@ -78,9 +78,8 @@ public class LoginBusiness : ILoginBusiness
             expirationDate.ToString(DATE_FORMAT),
             accessToken,
             refreshToken);
-
-
-
-
     }
+
+    public bool RevokeToken(string userName) 
+        => _repository.RevokeToken(userName);
 }
