@@ -47,6 +47,20 @@ public class PersonController : ControllerBase
         return Ok(person);
     }
 
+    [HttpGet("getbyName")]
+    [ProducesResponseType((200), Type = typeof(PersonEntity))]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(401)]
+    [TypeFilter(typeof(HyperMediaFilter))]
+    public IActionResult GetByName([FromQuery] string firstName,
+                                   [FromQuery] string lastName)
+    {
+        var people = _personBusiness.FindByName(firstName, lastName);
+        if (people == null) return NotFound();
+        return Ok(people);
+    }
+
     [HttpPost("post")]
     [ProducesResponseType((200), Type = typeof(PersonEntity))]
     [ProducesResponseType(400)]

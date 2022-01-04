@@ -23,6 +23,11 @@ public class PersonBusiness : IPersonBusiness
     public PersonEntity FindByID(int id)
         => _converter.Parse(_repository.FindByID(id));
 
+
+    public IEnumerable<PersonEntity> FindByName(
+        string firstName,
+        string lastName) 
+        => _converter.Parse(_repository.findByName(firstName, lastName));
     public PersonEntity Update(PersonEntity person)
         => _converter.Parse(_repository.Update(_converter.Parse(person)));
 

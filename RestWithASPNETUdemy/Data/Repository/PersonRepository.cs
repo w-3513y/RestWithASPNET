@@ -34,4 +34,34 @@ public class PersonRepository : BaseRepository<Person>, IPersonRepository
         }
         return user;
     }
+
+    public IEnumerable<Person> findByName(string firstName, string lastName)
+    {
+        if (!string.IsNullOrWhiteSpace(firstName) &&
+            !string.IsNullOrWhiteSpace(lastName))
+        {
+            return _context.People
+                           .Where(p =>
+                           (p.FirstName
+                             .Contains(firstName) &&
+                            p.LastName
+                             .Contains(lastName))).ToList();
+
+        }
+        else if (!string.IsNullOrWhiteSpace(firstName))
+        {
+            return _context.People
+                           .Where(p =>
+                            p.FirstName
+                             .Contains(firstName)).ToList();
+        }
+        else if (!string.IsNullOrWhiteSpace(lastName))
+        {
+            return _context.People
+                           .Where(p =>
+                            p.LastName
+                             .Contains(lastName)).ToList();
+        }
+        return null;
+    }
 }
