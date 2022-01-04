@@ -15,7 +15,8 @@ public abstract class ContentResponseEnricher<T> : IResponseEnricher where T : I
 
     public virtual bool CanEnrich(Type contentType)
         => contentType == typeof(T) ||
-           contentType == typeof(List<T>);
+           contentType == typeof(List<T>)||
+           contentType == typeof(PagedSearchEntity<T>);
 
     protected abstract Task EnrichModel(T content, IUrlHelper urlHelper);
     bool IResponseEnricher.CanEnrich(ResultExecutingContext response)
@@ -40,6 +41,13 @@ public abstract class ContentResponseEnricher<T> : IResponseEnricher where T : I
             {
                 ConcurrentBag<T> bag = new ConcurrentBag<T>(collection);
                 Parallel.ForEach(bag, (element) =>
+                {
+                    EnrichModel(element, urlHelper);
+                });
+            }
+            else if (okObjectResult.Value is PagedSearchEntity<T> pagedSearch)
+            {
+                Parallel.ForEach(pagedSearch.List.ToList(), (element) =>
                 {
                     EnrichModel(element, urlHelper);
                 });

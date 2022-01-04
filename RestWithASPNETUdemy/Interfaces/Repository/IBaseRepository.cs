@@ -9,4 +9,6 @@ public interface IBaseRepository<T> where T : Base
     IEnumerable<T> FindAll ();
     T Update(T obj);
     void Delete(int id);
+    IEnumerable<T> FindWithPagedSearch(string query);
+    int GetCount(string query);
 }
