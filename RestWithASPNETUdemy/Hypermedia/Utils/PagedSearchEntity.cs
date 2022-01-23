@@ -3,12 +3,12 @@ using RestWithASPNETUdemy.Hypermedia.Abstract;
 
 namespace RestWithASPNETUdemy.Hypermedia;
 
-public abstract class PagedSearchEntity<T> where T : ISupportsHyperMedia
+public class PagedSearchEntity<T> where T : ISupportsHyperMedia
 {
-    protected PagedSearchEntity()
+    public PagedSearchEntity()
     { }
 
-    protected PagedSearchEntity(
+    public PagedSearchEntity(
         int currentPage,
         int pageSize,
         string sortFields,
@@ -20,7 +20,7 @@ public abstract class PagedSearchEntity<T> where T : ISupportsHyperMedia
         SortDirections = sortDirections;
     }
 
-    protected PagedSearchEntity(
+    public PagedSearchEntity(
         int currentPage,
         int pageSize,
         string sortFields,
@@ -31,11 +31,12 @@ public abstract class PagedSearchEntity<T> where T : ISupportsHyperMedia
         Filters = filters;
     }
 
-    protected PagedSearchEntity(
+    public PagedSearchEntity(
         int currentPage,
         string sortFields,
         string sortDirections) :
-        this(currentPage, pageSize: 10, sortFields, sortDirections)
+        this(currentPage, pageSize: 10,
+            sortFields, sortDirections)
     { }
 
     public int CurrentPage { get; set; }
