@@ -41,7 +41,7 @@ app.UseCors();
 if (app.Environment.IsDevelopment())
 {
     //creating migrations
-    DependencyContainer.CreateMigration(connection);
+    //DependencyContainer.CreateMigration(connection);
     //swagger
     app.UseSwagger();
     app.UseSwaggerUI();
