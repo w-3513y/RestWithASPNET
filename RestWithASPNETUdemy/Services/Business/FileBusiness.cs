@@ -36,7 +36,7 @@ public class FileBusiness : IFileBusiness
                 fileDetail.DocumentName = docName;
                 fileDetail.DocType = fileType;
                 fileDetail.DocUrl = Path.Combine(_basePath + "/api/file/v1" + fileDetail.DocumentName);
-                
+
                 using var stream = new FileStream(destination, FileMode.Create);
                 await file.CopyToAsync(stream);
             }
@@ -45,8 +45,12 @@ public class FileBusiness : IFileBusiness
     }
 
 
-    public Task<IEnumerable<FileDetailEntity>> SaveFilesToDisk(IEnumerable<IFormFile> files)
+    public async Task<IEnumerable<FileDetailEntity>> SaveFilesToDisk(IEnumerable<IFormFile> files)
     {
-        throw new NotImplementedException();
+        return (IEnumerable<FileDetailEntity>)
+        files.Select(async p =>
+        {
+            return await SaveFileToDisk(p);
+        });
     }
 }
