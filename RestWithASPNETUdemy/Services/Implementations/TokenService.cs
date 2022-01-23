@@ -4,8 +4,9 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using RestWithASPNETUdemy.Configurations;
+using RestWithASPNETUdemy.Interfaces.Services;
 
-namespace RestWithASPNETUdemy.Services.Implementations;
+namespace RestWithASPNETUdemy.Services;
 
 public class TokenService : ITokenService
 {

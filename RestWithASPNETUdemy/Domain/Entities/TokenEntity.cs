@@ -1,6 +1,7 @@
 namespace RestWithASPNETUdemy.Entities;
 
 public class TokenEntity {
+
     public TokenEntity(bool authenticated,
                        string created,
                        string expiration,

@@ -14,12 +14,12 @@ using RestWithASPNETUdemy.Hypermedia.Filters;
 using RestWithASPNETUdemy.Hypermedia.Enricher;
 using Microsoft.Net.Http.Headers;
 using RestWithASPNETUdemy.Services;
-using RestWithASPNETUdemy.Services.Implementations;
 using RestWithASPNETUdemy.Configurations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using RestWithASPNETUdemy.Interfaces.Services;
 
 namespace RestWithASPNETUdemy.Data;
 

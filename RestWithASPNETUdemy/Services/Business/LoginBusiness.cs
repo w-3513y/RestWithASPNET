@@ -3,7 +3,7 @@ using System.Security.Claims;
 using RestWithASPNETUdemy.Configurations;
 using RestWithASPNETUdemy.Entities;
 using RestWithASPNETUdemy.Interfaces.Repository;
-using RestWithASPNETUdemy.Services;
+using RestWithASPNETUdemy.Interfaces.Services;
 
 namespace RestWithASPNETUdemy.Interfaces.Business;
 

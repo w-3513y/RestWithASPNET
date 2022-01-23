@@ -1,6 +1,6 @@
 using System.Security.Claims;
 
-namespace RestWithASPNETUdemy.Services;
+namespace RestWithASPNETUdemy.Interfaces.Services;
 
 public interface ITokenService{
     string GenerateAccessToken(IEnumerable<Claim> claims);
