@@ -16,7 +16,8 @@ public class FileBusiness : IFileBusiness
     }
     public byte[] GetFile(string fileName)
     {
-        throw new NotImplementedException();
+        var filePath = _basePath + fileName;
+        return File.ReadAllBytes(filePath);
     }
 
     public async Task<FileDetailEntity> SaveFileToDisk(IFormFile file)
