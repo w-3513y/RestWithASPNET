@@ -34,6 +34,7 @@ public class DependencyContainer
         builder.Services.AddScoped<IPersonBusiness, PersonBusiness>();
         builder.Services.AddScoped<IBookBusiness, BookBusiness>();
         builder.Services.AddScoped<ILoginBusiness, LoginBusiness>();
+
         builder.Services.AddTransient<ITokenService, TokenService>();
         //Repository
         builder.Services.AddScoped<IBaseRepository<Person>, BaseRepository<Person>>();

@@ -83,7 +83,7 @@ public class PersonController : ControllerBase
         return Ok(_personBusiness.Update(person));
     }
 
-    [HttpGet("patch")]
+    [HttpPatch("patch")]
     [ProducesResponseType((200), Type = typeof(List<PersonEntity>))]
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]

@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using RestWithASPNETUdemy.Domain.Interfaces.Business;
 using RestWithASPNETUdemy.Domain.Entities;
-using RestWithASPNETUdemy.Hypermedia.Filters;
 using Microsoft.AspNetCore.Authorization;
 
 namespace RestWithASPNETUdemy.Controllers;
 
 [ApiVersion("1")]
-[Route("api/[controller]/v{version:apiversion}")]
 [ApiController]
+[Authorize("Bearer")]
+[Route("api/[controller]/v{version:apiversion}")]
 public class AuthController : ControllerBase
 {
     private ILoginBusiness _loginbusiness;

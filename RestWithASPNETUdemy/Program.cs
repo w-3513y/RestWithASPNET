@@ -10,8 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 var tokenConfigurations = new TokenConfiguration();
 new ConfigureFromConfigurationOptions<TokenConfiguration>(
-    builder.Configuration.GetSection("TokenConfigurations")
-).Configure(tokenConfigurations);
+    builder.Configuration.GetSection("TokenConfigurations")).
+    Configure(tokenConfigurations);
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(build =>
