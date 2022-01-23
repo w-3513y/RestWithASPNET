@@ -1,7 +1,7 @@
 using RestWithASPNETUdemy.Data.Context;
-using RestWithASPNETUdemy.Entities;
-using RestWithASPNETUdemy.Interfaces.Repository;
-using RestWithASPNETUdemy.Model;
+using RestWithASPNETUdemy.Domain.Entities;
+using RestWithASPNETUdemy.Domain.Interfaces.Repository;
+using RestWithASPNETUdemy.Domain.Model;
 using System.Security.Cryptography;
 using System.Text;
 

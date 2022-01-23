@@ -1,6 +1,6 @@
 using RestWithASPNETUdemy.Data.Context;
-using RestWithASPNETUdemy.Model;
-using RestWithASPNETUdemy.Interfaces.Repository;
+using RestWithASPNETUdemy.Domain.Model;
+using RestWithASPNETUdemy.Domain.Interfaces.Repository;
 
 namespace RestWithASPNETUdemy.Data.Repository;
 

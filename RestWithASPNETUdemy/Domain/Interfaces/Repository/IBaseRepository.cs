@@ -1,6 +1,6 @@
-using RestWithASPNETUdemy.Model;
+using RestWithASPNETUdemy.Domain.Model;
 
-namespace RestWithASPNETUdemy.Interfaces.Repository;
+namespace RestWithASPNETUdemy.Domain.Interfaces.Repository;
 
 public interface IBaseRepository<T> where T : Base
 {

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RestWithASPNETUdemy.Model;
+using RestWithASPNETUdemy.Domain.Model;
 
 namespace RestWithASPNETUdemy.Data.Context;
 

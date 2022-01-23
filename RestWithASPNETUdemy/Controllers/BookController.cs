@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using RestWithASPNETUdemy.Interfaces.Business;
-using RestWithASPNETUdemy.Entities;
+using RestWithASPNETUdemy.Domain.Interfaces.Business;
+using RestWithASPNETUdemy.Domain.Entities;
 using RestWithASPNETUdemy.Hypermedia.Filters;
 using Microsoft.AspNetCore.Authorization;
 

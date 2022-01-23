@@ -1,6 +1,6 @@
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
-using RestWithASPNETUdemy.Entities;
+using RestWithASPNETUdemy.Domain.Entities;
 using RestWithASPNETUdemy.Hypermedia.Constants;
 
 namespace RestWithASPNETUdemy.Hypermedia.Enricher;

@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using RestWithASPNETUdemy.Configurations;
-using RestWithASPNETUdemy.Interfaces.Services;
+using RestWithASPNETUdemy.Domain.Interfaces.Services;
 
 namespace RestWithASPNETUdemy.Services;
 

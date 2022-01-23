@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RestWithASPNETUdemy.Model;
+namespace RestWithASPNETUdemy.Domain.Model;
 
 [Table("books")]
 public class Book : Base

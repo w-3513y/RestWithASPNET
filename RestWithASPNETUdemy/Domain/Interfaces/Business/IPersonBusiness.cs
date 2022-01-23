@@ -1,6 +1,6 @@
-using RestWithASPNETUdemy.Entities;
+using RestWithASPNETUdemy.Domain.Entities;
 
-namespace RestWithASPNETUdemy.Interfaces.Business;
+namespace RestWithASPNETUdemy.Domain.Interfaces.Business;
 
 public interface IPersonBusiness{
     PersonEntity Create(PersonEntity person);

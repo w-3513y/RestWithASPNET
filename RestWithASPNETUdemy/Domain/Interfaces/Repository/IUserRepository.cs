@@ -1,7 +1,7 @@
-using RestWithASPNETUdemy.Entities;
-using RestWithASPNETUdemy.Model;
+using RestWithASPNETUdemy.Domain.Entities;
+using RestWithASPNETUdemy.Domain.Model;
 
-namespace RestWithASPNETUdemy.Interfaces.Repository;
+namespace RestWithASPNETUdemy.Domain.Interfaces.Repository;
 
 public interface IUserRepository
 {

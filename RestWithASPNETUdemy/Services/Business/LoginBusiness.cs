@@ -1,11 +1,12 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using RestWithASPNETUdemy.Configurations;
-using RestWithASPNETUdemy.Entities;
-using RestWithASPNETUdemy.Interfaces.Repository;
-using RestWithASPNETUdemy.Interfaces.Services;
+using RestWithASPNETUdemy.Domain.Entities;
+using RestWithASPNETUdemy.Domain.Interfaces.Business;
+using RestWithASPNETUdemy.Domain.Interfaces.Repository;
+using RestWithASPNETUdemy.Domain.Interfaces.Services;
 
-namespace RestWithASPNETUdemy.Interfaces.Business;
+namespace RestWithASPNETUdemy.Services.Business;
 
 public class LoginBusiness : ILoginBusiness
 {

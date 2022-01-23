@@ -1,15 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using RestWithASPNETUdemy.Data.Context;
-using RestWithASPNETUdemy.Business;
-using RestWithASPNETUdemy.Interfaces.Business;
-using RestWithASPNETUdemy.Interfaces.Repository;
+using RestWithASPNETUdemy.Services.Business;
+using RestWithASPNETUdemy.Domain.Interfaces.Business;
+using RestWithASPNETUdemy.Domain.Interfaces.Repository;
 using Serilog;
 using MySqlConnector;
-using RestWithASPNETUdemy.Model;
+using RestWithASPNETUdemy.Domain.Model;
 using RestWithASPNETUdemy.Data.Repository;
 using RestWithASPNETUdemy.Data.Mapping.Contract;
 using RestWithASPNETUdemy.Data.Mapping.Implementations;
-using RestWithASPNETUdemy.Entities;
+using RestWithASPNETUdemy.Domain.Entities;
 using RestWithASPNETUdemy.Hypermedia.Filters;
 using RestWithASPNETUdemy.Hypermedia.Enricher;
 using Microsoft.Net.Http.Headers;
@@ -19,7 +19,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
-using RestWithASPNETUdemy.Interfaces.Services;
+using RestWithASPNETUdemy.Domain.Interfaces.Services;
 
 namespace RestWithASPNETUdemy.Data;
 

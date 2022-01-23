@@ -1,10 +1,10 @@
-using RestWithASPNETUdemy.Model;
-using RestWithASPNETUdemy.Interfaces.Business;
-using RestWithASPNETUdemy.Interfaces.Repository;
-using RestWithASPNETUdemy.Entities;
+using RestWithASPNETUdemy.Domain.Model;
+using RestWithASPNETUdemy.Domain.Interfaces.Business;
+using RestWithASPNETUdemy.Domain.Interfaces.Repository;
+using RestWithASPNETUdemy.Domain.Entities;
 using RestWithASPNETUdemy.Data.Mapping.Contract;
 
-namespace RestWithASPNETUdemy.Business;
+namespace RestWithASPNETUdemy.Services.Business;
 
 public class BookBusiness : IBookBusiness
 {

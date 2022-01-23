@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RestWithASPNETUdemy.Model;
+namespace RestWithASPNETUdemy.Domain.Model;
 
 [Table("Person")]
 public class Person : Base
