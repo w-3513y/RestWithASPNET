@@ -28,13 +28,14 @@ public class DependencyContainer
 
     public static void RegisterServices(WebApplicationBuilder builder, string connection)
     {
+        builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         //Context
         builder.Services.AddDbContext<MySQLContext>(options => options.UseMySql(connection, new MySqlServerVersion(new Version(8, 0, 27))));
         //Services
         builder.Services.AddScoped<IPersonBusiness, PersonBusiness>();
         builder.Services.AddScoped<IBookBusiness, BookBusiness>();
         builder.Services.AddScoped<ILoginBusiness, LoginBusiness>();
-
+        builder.Services.AddScoped<IFileBusiness, FileBusiness>();
         builder.Services.AddTransient<ITokenService, TokenService>();
         //Repository
         builder.Services.AddScoped<IBaseRepository<Person>, BaseRepository<Person>>();
