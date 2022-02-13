@@ -24,7 +24,7 @@ public class PersonBusiness : IPersonBusiness
 
     public PagedSearchEntity<PersonEntity> FindWithPagedSearch(
         string name,
-        string sortDirection,
+        string sortDirection, 
         int pageSize,
         int page)
     {

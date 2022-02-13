@@ -29,10 +29,15 @@ public class BookController : ControllerBase
     [ProducesResponseType(400)]
     [ProducesResponseType(401)]
     [TypeFilter(typeof(HyperMediaFilter))]
-    public IActionResult Get()
-    {
-        return Ok(_bookBusiness.FindAll);
-    }
+    public IActionResult Get(
+        [FromQuery] string title,
+        string sortDirection,
+        int pageSize,
+        int page) => Ok(_bookBusiness.
+                        FindWithPagedSearch(title,
+                                            sortDirection,
+                                            pageSize,
+                                            page));
 
     [HttpGet("getbyId")]
     [ProducesResponseType((200), Type = typeof(BookEntity))]
