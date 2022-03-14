@@ -8,6 +8,6 @@
 * Docker 20.10.7
 * docker-compose 1.29.2
 * mysql 8.0.27 for Linux
-* MySQL Workbench CE 8.0.27 CE build 1228725
+* Integração do Azure utilizando GitHub Actions
 
 
